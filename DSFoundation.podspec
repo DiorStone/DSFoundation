@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.version          = '0.1.0'
   s.summary          = '常用基础代码.'
   s.description      = <<-DESC
-  常用基础代码.
+  常用基础代码,持续更新中.
                        DESC
 
   s.homepage         = 'https://github.com/DiorStone/DSFoundation'
