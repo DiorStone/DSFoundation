@@ -1,6 +1,6 @@
 # DSFoundation
 ![](https://img.shields.io/badge/language-swift-orange.svg)
-[![CI Status](http://img.shields.io/travis/mrdaios/DSFoundation.svg?style=flat)](https://travis-ci.org/mrdaios/DSFoundation)
+[![Build Status](https://www.travis-ci.org/DiorStone/DSFoundation.svg?branch=master)](https://www.travis-ci.org/DiorStone/DSFoundation)
 [![Version](https://img.shields.io/cocoapods/v/DSFoundation.svg?style=flat)](http://cocoapods.org/pods/DSFoundation)
 [![License](https://img.shields.io/cocoapods/l/DSFoundation.svg?style=flat)](http://cocoapods.org/pods/DSFoundation)
 [![Platform](https://img.shields.io/cocoapods/p/DSFoundation.svg?style=flat)](http://cocoapods.org/pods/DSFoundation)
