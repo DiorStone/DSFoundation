@@ -1,0 +1,16 @@
+PODS:
+  - DSFoundation (0.1.0)
+
+DEPENDENCIES:
+  - DSFoundation (from `../`)
+
+EXTERNAL SOURCES:
+  DSFoundation:
+    :path: ../
+
+SPEC CHECKSUMS:
+  DSFoundation: 5fb0a3185bace8dd9ade39cf9794a01f38e73462
+
+PODFILE CHECKSUM: 443a1f7cb73d1c480fbabdedcf44e116f56f616f
+
+COCOAPODS: 1.4.0
