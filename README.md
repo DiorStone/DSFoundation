@@ -1,7 +1,8 @@
 # DSFoundation
-![](https://img.shields.io/badge/language-swift-orange.svg)
+[![Swift](https://img.shields.io/badge/language-swift-orange.svg)](https://swift.org)
 [![Build Status](https://www.travis-ci.org/DiorStone/DSFoundation.svg?branch=master)](https://www.travis-ci.org/DiorStone/DSFoundation)
 [![Version](https://img.shields.io/cocoapods/v/DSFoundation.svg?style=flat)](http://cocoapods.org/pods/DSFoundation)
+[![Carthage](https://img.shields.io/badge/carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](https://img.shields.io/cocoapods/l/DSFoundation.svg?style=flat)](http://cocoapods.org/pods/DSFoundation)
 [![Platform](https://img.shields.io/cocoapods/p/DSFoundation.svg?style=flat)](http://cocoapods.org/pods/DSFoundation)
 
@@ -83,6 +84,10 @@ If you prefer not to use any of the aforementioned dependency managers, you can 
 ## 更新说明
 * 0.1.0
   - 初始化版本提交
+
+## 推荐依赖库
+* [SwiftDate](https://github.com/malcommac/SwiftDate)常用日期处理
+
 
 ## Author
 mrdaios, mrdaios@gmail.com

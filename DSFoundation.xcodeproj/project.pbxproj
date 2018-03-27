@@ -21,6 +21,7 @@
 		AB20CE992068D06B0038F90D /* XcodeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB20CE8B2068D06B0038F90D /* XcodeFormatter.swift */; };
 		AB20CE9A2068D06B0038F90D /* XcodePlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB20CE8C2068D06B0038F90D /* XcodePlugin.swift */; };
 		AB20CE9B2068D06B0038F90D /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB20CE8D2068D06B0038F90D /* Logger.swift */; };
+		AB20CED82068F6830038F90D /* UIDeviceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB20CED72068F6830038F90D /* UIDeviceExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		AB20CE9C2068D0780038F90D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AB20CE9D2068D0780038F90D /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		AB20CE9E2068D0780038F90D /* DSFoundation.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = DSFoundation.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		AB20CED72068F6830038F90D /* UIDeviceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				AB20CE7E2068D06B0038F90D /* UIViewExtensions.swift */,
+				AB20CED72068F6830038F90D /* UIDeviceExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 			files = (
 				AB20CE912068D06B0038F90D /* UIViewExtensions.swift in Sources */,
 				AB20CE8E2068D06B0038F90D /* Application.swift in Sources */,
+				AB20CED82068F6830038F90D /* UIDeviceExtensions.swift in Sources */,
 				AB20CE962068D06B0038F90D /* Plugin.swift in Sources */,
 				AB20CE9A2068D06B0038F90D /* XcodePlugin.swift in Sources */,
 				AB20CE942068D06B0038F90D /* Log.swift in Sources */,

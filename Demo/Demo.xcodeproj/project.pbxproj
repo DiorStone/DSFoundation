@@ -18,6 +18,7 @@
 		AB20CED02068D65D0038F90D /* UIViewExtensionTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB20CECF2068D65D0038F90D /* UIViewExtensionTestCase.swift */; };
 		AB20CED42068D8670038F90D /* TestNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB20CED32068D8670038F90D /* TestNib.xib */; };
 		AB20CED62068DDC10038F90D /* LoggerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB20CED52068DDC10038F90D /* LoggerTestCase.swift */; };
+		AB20CEDA2068FAF00038F90D /* UIDeviceExtensionTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB20CED92068FAF00038F90D /* UIDeviceExtensionTestCase.swift */; };
 		C8FDB4C6714F03F36CA22D28 /* Pods_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 972B2EF89B8BDDB5CC1F0577 /* Pods_Demo.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		AB20CECF2068D65D0038F90D /* UIViewExtensionTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensionTestCase.swift; sourceTree = "<group>"; };
 		AB20CED32068D8670038F90D /* TestNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestNib.xib; sourceTree = "<group>"; };
 		AB20CED52068DDC10038F90D /* LoggerTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerTestCase.swift; sourceTree = "<group>"; };
+		AB20CED92068FAF00038F90D /* UIDeviceExtensionTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtensionTestCase.swift; sourceTree = "<group>"; };
 		BB4C38B61D9DEE77B0ED5143 /* Pods-DemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DemoTests/Pods-DemoTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,6 +137,7 @@
 				AB20CECD2068D3380038F90D /* ApplicationTestCase.swift */,
 				AB20CECF2068D65D0038F90D /* UIViewExtensionTestCase.swift */,
 				AB20CED52068DDC10038F90D /* LoggerTestCase.swift */,
+				AB20CED92068FAF00038F90D /* UIDeviceExtensionTestCase.swift */,
 				AB20CEC72068D30E0038F90D /* Info.plist */,
 			);
 			path = DemoTests;
@@ -366,6 +369,7 @@
 			files = (
 				AB20CECE2068D3380038F90D /* ApplicationTestCase.swift in Sources */,
 				AB20CEC62068D30E0038F90D /* DemoTests.swift in Sources */,
+				AB20CEDA2068FAF00038F90D /* UIDeviceExtensionTestCase.swift in Sources */,
 				AB20CED02068D65D0038F90D /* UIViewExtensionTestCase.swift in Sources */,
 				AB20CED62068DDC10038F90D /* LoggerTestCase.swift in Sources */,
 			);
