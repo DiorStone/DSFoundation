@@ -26,7 +26,7 @@ $ gem install cocoapods
 
 > CocoaPods 1.1.0+ is required to build DSFoundation 0.1.0+.
 
-To integrate Alamofire into your Xcode project using CocoaPods, specify it in your `Podfile`:
+To integrate DSFoundation into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
@@ -87,6 +87,8 @@ If you prefer not to use any of the aforementioned dependency managers, you can 
 
 ## 推荐依赖库
 * [SwiftDate](https://github.com/malcommac/SwiftDate)常用日期处理
+* [CryptoSwift](https://github.com/krzyzanowskim/CryptoSwift)常用加密算法
+* [Kingfisher](https://github.com/onevcat/Kingfisher)图片下载框架
 
 
 ## Author
