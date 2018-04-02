@@ -22,6 +22,6 @@ class UIDeviceExtensionTestCase: XCTestCase {
     }
     
     func test() {
-        assert(UIDevice.current.isPhone != UIDevice.current.isPad)
+        assert(UIDevice.current.ds.isPhone != UIDevice.current.ds.isPad)
     }
 }

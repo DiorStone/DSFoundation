@@ -54,6 +54,21 @@ fileprivate func recursionController(with viewController: UIViewController?) -> 
     return currentController
 }
 
+extension Application {
+    
+    /// 当前ViewController
+    ///
+    /// 自定义容器请参考**Activeable**
+    ///
+    /// - Returns: 返回当前ViewController(自动遍历容器和PresentController)
+    public static func currentController() -> UIViewController? {
+        let viewController: UIViewController? = UIApplication.shared.keyWindow?.rootViewController
+        return recursionController(with: viewController)
+    }
+}
+
+// MARK: Deprecated
+
 extension NSObject {
     
     /// 当前ViewController
@@ -61,6 +76,7 @@ extension NSObject {
     /// 自定义容器请参考**Activeable**
     ///
     /// - Returns: 返回当前ViewController(自动遍历容器和PresentController)
+    @available(*, deprecated, message: "Use Application.currentController() api instead.")
     public func currentController() -> UIViewController? {
         let viewController: UIViewController? = UIApplication.shared.keyWindow?.rootViewController
         return recursionController(with: viewController)

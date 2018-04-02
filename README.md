@@ -89,6 +89,7 @@ If you prefer not to use any of the aforementioned dependency managers, you can 
 * [SwiftDate](https://github.com/malcommac/SwiftDate)常用日期处理
 * [CryptoSwift](https://github.com/krzyzanowskim/CryptoSwift)常用加密算法
 * [Kingfisher](https://github.com/onevcat/Kingfisher)图片下载框架
+* [Alamofire](https://github.com/Alamofire/Alamofire)网络框架
 
 
 ## Author

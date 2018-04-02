@@ -24,11 +24,9 @@ class ViewController: UIViewController, ActiveViewable {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) { [weak self] in
             self?.present(viewController, animated: true, completion: nil)
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) { [weak self] in
-                print(self?.currentController())
+                print(Application.currentController())
             }
         }
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
