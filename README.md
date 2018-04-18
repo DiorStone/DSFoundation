@@ -90,6 +90,7 @@ If you prefer not to use any of the aforementioned dependency managers, you can 
 * [CryptoSwift](https://github.com/krzyzanowskim/CryptoSwift)常用加密算法
 * [Kingfisher](https://github.com/onevcat/Kingfisher)图片下载框架
 * [Alamofire](https://github.com/Alamofire/Alamofire)网络框架
+* [Defaults](https://github.com/sindresorhus/Defaults)UserDefaults存储app配置信息
 
 
 ## Author
