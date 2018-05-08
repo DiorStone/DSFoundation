@@ -23,6 +23,7 @@
 		AB20CE9B2068D06B0038F90D /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB20CE8D2068D06B0038F90D /* Logger.swift */; };
 		AB20CED82068F6830038F90D /* UIDeviceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB20CED72068F6830038F90D /* UIDeviceExtensions.swift */; };
 		AB3BBFD3206CD341007A5EDD /* DSFoundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3BBFD2206CD341007A5EDD /* DSFoundation.swift */; };
+		ABFBFC6120A1F0E8002AE6DC /* UIControlExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFBFC6020A1F0E8002AE6DC /* UIControlExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		AB20CE9E2068D0780038F90D /* DSFoundation.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = DSFoundation.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		AB20CED72068F6830038F90D /* UIDeviceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtensions.swift; sourceTree = "<group>"; };
 		AB3BBFD2206CD341007A5EDD /* DSFoundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSFoundation.swift; sourceTree = "<group>"; };
+		ABFBFC6020A1F0E8002AE6DC /* UIControlExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControlExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 			children = (
 				AB20CE7E2068D06B0038F90D /* UIViewExtensions.swift */,
 				AB20CED72068F6830038F90D /* UIDeviceExtensions.swift */,
+				ABFBFC6020A1F0E8002AE6DC /* UIControlExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				AB20CE9B2068D06B0038F90D /* Logger.swift in Sources */,
 				AB20CE932068D06B0038F90D /* Formatter.swift in Sources */,
 				AB20CE972068D06B0038F90D /* Target.swift in Sources */,
+				ABFBFC6120A1F0E8002AE6DC /* UIControlExtensions.swift in Sources */,
 				AB3BBFD3206CD341007A5EDD /* DSFoundation.swift in Sources */,
 				AB20CE992068D06B0038F90D /* XcodeFormatter.swift in Sources */,
 				AB20CE922068D06B0038F90D /* AssociatedValues.swift in Sources */,

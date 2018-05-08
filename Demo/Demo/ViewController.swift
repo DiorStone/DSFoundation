@@ -20,13 +20,23 @@ class ViewController: UIViewController, ActiveViewable {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 //        UIAlertView(title: "<#T##String?#>", message: "<#T##String?#>", delegate: nil, cancelButtonTitle: "<#T##String?#>").show()
-        let viewController = UIAlertController(title: "<#T##String?#>", message: "<#T##String?#>", preferredStyle: UIAlertControllerStyle.actionSheet)
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) { [weak self] in
-            self?.present(viewController, animated: true, completion: nil)
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) { [weak self] in
-                print(Application.currentController())
-            }
-        }
+//        let viewController = UIAlertController(title: "<#T##String?#>", message: "<#T##String?#>", preferredStyle: UIAlertControllerStyle.actionSheet)
+//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) { [weak self] in
+//            self?.present(viewController, animated: true, completion: nil)
+//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) { [weak self] in
+//                print(Application.currentController())
+//            }
+//        }
+		
+		let button = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
+		button.backgroundColor =  UIColor.red
+		button.ds.addTarget(for: .touchDown) {
+			
+		}
+		button.ds.addTarget(for: .touchDown) {
+			
+		}
+		self.view.addSubview(button)
     }
 
     override func didReceiveMemoryWarning() {
