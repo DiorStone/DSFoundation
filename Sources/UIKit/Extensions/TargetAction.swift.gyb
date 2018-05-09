@@ -1,0 +1,125 @@
+//
+//  TargetAction.swift
+//
+//  The MIT License (MIT)
+//  Copyright © 2018 DiorStone
+
+import UIKit
+%{
+    eventTypes = [
+                "touchDown",
+                "touchDownRepeat",
+                "touchDragInside",
+                "touchDragOutside",
+                "touchDragEnter",
+                "touchDragExit",
+                "touchUpInside",
+                "touchUpOutside",
+                "touchCancel",
+                "valueChanged",
+                "primaryActionTriggered",
+                "editingDidBegin",
+                "editingChanged",
+                "editingDidEnd",
+                "editingDidEndOnExit",
+                "allTouchEvents",
+                "allEditingEvents"
+                ]
+}%
+
+protocol TargetActionable {
+
+    var actionRegistry: [UInt:[Any]] { get set }
+    func triggerAction(forObject sender: UIControl, event: UIControlEvents)
+}
+
+extension TargetActionable where Self: UIControl {
+
+    func triggerAction(forObject sender: UIControl, event: UIControlEvents) {
+        sender.actionRegistry[event.rawValue]?.forEach({
+            if let function = $0 as? () -> Void {
+                function()
+            } else if let function = $0 as? (Self) -> Void {
+                function(sender as! Self)
+            }
+        })
+    }
+}
+
+extension UIControl: TargetActionable {
+
+     var actionRegistry: [UInt:[Any]]  {
+
+        set {
+            setAssociatedValue(object: self, associatedValue: newValue)
+        }
+
+        get {
+            return getAssociatedValue(object: self, initialValue: [:])
+        }
+    }
+
+    private func addAction(event: UIControlEvents, action: Any) {
+        if var actions = self.actionRegistry[event.rawValue] {
+            actions.append(action)
+            self.actionRegistry[event.rawValue] = actions
+        } else {
+            self.actionRegistry[event.rawValue] = [action]
+        }
+    }
+
+    private func removeAction(event: UIControlEvents) {
+        self.actionRegistry[event.rawValue] = []
+    }
+
+    //MARK: - API
+    func addTarget(for controlEvents: UIControlEvents, action: Any ) {
+% for eventType in eventTypes:
+% if eventType == 'primaryActionTriggered':
+        if #available(iOS 9.0, *) {
+            if controlEvents.contains(.${eventType}) {
+                self.addTarget(self, action: #selector(${eventType}(sender:)), for: .${eventType})
+                addAction(event: .${eventType}, action: action)
+            }
+        }
+%else:
+        if controlEvents.contains(.${eventType}) {
+            self.addTarget(self, action: #selector(${eventType}(sender:)), for: .${eventType})
+            addAction(event: .${eventType}, action: action)
+        }
+%end
+%end
+    }
+
+    func removeTarget(for controlEvents: UIControlEvents) {
+% for eventType in eventTypes:
+% if eventType == 'primaryActionTriggered':
+        if #available(iOS 9.0, *) {
+            if controlEvents.contains(.${eventType}) {
+                self.removeTarget(self, action: #selector(${eventType}(sender:)), for: .${eventType})
+                removeAction(event: .${eventType})
+            }
+        }
+%else:
+        if controlEvents.contains(.${eventType}) {
+            self.removeTarget(self, action: #selector(${eventType}(sender:)), for: .${eventType})
+            removeAction(event: .${eventType})
+        }
+%end
+%end
+    }
+
+    //MARK: - UIControlEvents
+% for eventType in eventTypes:
+
+    @objc fileprivate func ${eventType}(sender: UIControl) {
+% if eventType == 'primaryActionTriggered':
+        if #available(iOS 9.0, *) {
+            triggerAction(forObject: sender, event: .${eventType})
+        }
+%else:
+        triggerAction(forObject: sender, event: .${eventType})
+%end
+    }
+%end
+}

@@ -6,6 +6,12 @@
 
 import UIKit
 
+/**
+ TODO:
+ 1.多个应用模块配置信息如何共享
+ 
+ **/
+
 /// 参考KingFisher避免方法重复
 public final class DSFoundation<Base> {
     
