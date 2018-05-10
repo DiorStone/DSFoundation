@@ -15,7 +15,7 @@ import UIKit
 /// 参考KingFisher避免方法重复
 public final class DSFoundation<Base> {
     
-    internal let base: Base
+    internal var base: Base
     internal init(_ base: Base) {
         self.base = base
     }

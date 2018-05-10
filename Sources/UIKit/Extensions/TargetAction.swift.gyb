@@ -27,39 +27,28 @@ import UIKit
                 ]
 }%
 
+class TargetAction {
+
+    weak var sender: UIControl?
+    var action: Any
+    var invoke: (TargetAction)->Void
+
+    init(sender: UIControl?, action: Any, invoke: @escaping (TargetAction)->Void ) {
+        self.sender = sender
+        self.action = action
+        self.invoke = invoke
+    }
+}
+
 protocol TargetActionable {
 
+    /// event -> actions
     var actionRegistry: [UInt:[Any]] { get set }
-    func triggerAction(forObject sender: UIControl, event: UIControlEvents)
 }
 
-extension TargetActionable where Self: UIControl {
+extension TargetActionable {
 
-    func triggerAction(forObject sender: UIControl, event: UIControlEvents) {
-        sender.actionRegistry[event.rawValue]?.forEach({
-            if let function = $0 as? () -> Void {
-                function()
-            } else if let function = $0 as? (Self) -> Void {
-                function(sender as! Self)
-            }
-        })
-    }
-}
-
-extension UIControl: TargetActionable {
-
-     var actionRegistry: [UInt:[Any]]  {
-
-        set {
-            setAssociatedValue(object: self, associatedValue: newValue)
-        }
-
-        get {
-            return getAssociatedValue(object: self, initialValue: [:])
-        }
-    }
-
-    private func addAction(event: UIControlEvents, action: Any) {
+    mutating func addAction(event: UIControlEvents, action: Any) {
         if var actions = self.actionRegistry[event.rawValue] {
             actions.append(action)
             self.actionRegistry[event.rawValue] = actions
@@ -68,45 +57,74 @@ extension UIControl: TargetActionable {
         }
     }
 
-    private func removeAction(event: UIControlEvents) {
+    mutating func removeAction(event: UIControlEvents) {
         self.actionRegistry[event.rawValue] = []
     }
+}
 
-    //MARK: - API
-    func addTarget(for controlEvents: UIControlEvents, action: Any ) {
-% for eventType in eventTypes:
-% if eventType == 'primaryActionTriggered':
+extension TargetActionable where Self: UIControl {
+
+    mutating func addTarget(for controlEvents: UIControlEvents, action: Any ) {
+        let targetAction = TargetAction(sender: self, action: action) { target in
+            if let function = target.action as? ()->Void {
+                function()
+            } else if let function = target.action as? (Self)->Void {
+                function(target.sender as! Self)
+            }
+        }
+    % for eventType in eventTypes:
+        % if eventType == 'primaryActionTriggered':
         if #available(iOS 9.0, *) {
             if controlEvents.contains(.${eventType}) {
                 self.addTarget(self, action: #selector(${eventType}(sender:)), for: .${eventType})
-                addAction(event: .${eventType}, action: action)
+                addAction(event: .${eventType}, action: targetAction)
             }
         }
-%else:
+        %else:
         if controlEvents.contains(.${eventType}) {
             self.addTarget(self, action: #selector(${eventType}(sender:)), for: .${eventType})
-            addAction(event: .${eventType}, action: action)
+            addAction(event: .${eventType}, action: targetAction)
         }
-%end
-%end
+        %end
+    %end
     }
 
-    func removeTarget(for controlEvents: UIControlEvents) {
-% for eventType in eventTypes:
-% if eventType == 'primaryActionTriggered':
+    mutating func removeTarget(for controlEvents: UIControlEvents) {
+    % for eventType in eventTypes:
+        % if eventType == 'primaryActionTriggered':
         if #available(iOS 9.0, *) {
             if controlEvents.contains(.${eventType}) {
                 self.removeTarget(self, action: #selector(${eventType}(sender:)), for: .${eventType})
                 removeAction(event: .${eventType})
             }
         }
-%else:
+        %else:
         if controlEvents.contains(.${eventType}) {
             self.removeTarget(self, action: #selector(${eventType}(sender:)), for: .${eventType})
             removeAction(event: .${eventType})
         }
-%end
-%end
+        %end
+    %end
+    }
+}
+
+extension UIControl: TargetActionable {
+
+     var actionRegistry: [UInt:[Any]]  {
+        set {
+            setAssociatedValue(object: self, associatedValue: newValue)
+        }
+        get {
+            return getAssociatedValue(object: self, initialValue: [:])
+        }
+    }
+
+    func triggerAction(forObject sender: UIControl, event: UIControlEvents) {
+        sender.actionRegistry[event.rawValue]?.forEach({
+            if let function = $0 as? TargetAction {
+                function.invoke(function)
+            }
+        })
     }
 
     //MARK: - UIControlEvents

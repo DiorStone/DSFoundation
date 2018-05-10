@@ -51,6 +51,7 @@
 		AB30992020A27C3E00FF7569 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		AB30992520A27C6A00FF7569 /* TargetAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetAction.swift; sourceTree = "<group>"; };
 		AB30992820A27CF000FF7569 /* TargetAction.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = TargetAction.swift.gyb; sourceTree = "<group>"; };
+		AB3673B220A415180034ADCA /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		AB3BBFD2206CD341007A5EDD /* DSFoundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSFoundation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,6 +72,7 @@
 				AB20CE9E2068D0780038F90D /* DSFoundation.podspec */,
 				AB20CE9D2068D0780038F90D /* LICENSE */,
 				AB20CE9C2068D0780038F90D /* README.md */,
+				AB3673B220A415180034ADCA /* CHANGELOG.md */,
 				AB20CE772068D06B0038F90D /* Sources */,
 				AB20CE6D2068D0190038F90D /* Products */,
 			);

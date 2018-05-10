@@ -6,49 +6,28 @@
 
 import UIKit
 
-public protocol TargetActionable {
+class TargetAction {
 
+    weak var sender: UIControl?
+    var action: Any
+    var invoke: (TargetAction)->Void
+
+    init(sender: UIControl?, action: Any, invoke: @escaping (TargetAction)->Void ) {
+        self.sender = sender
+        self.action = action
+        self.invoke = invoke
+    }
+}
+
+protocol TargetActionable {
+
+    /// event -> actions
     var actionRegistry: [UInt:[Any]] { get set }
-    func triggerAction(forObject sender: UIControl, event: UIControlEvents)
-    func addAction(event: UIControlEvents, action: Any)
 }
 
-extension TargetActionable where Self: UIControl {
-    
-    public func triggerAction(forObject sender: UIControl, event: UIControlEvents) {
-        sender.actionRegistry[event.rawValue]?.forEach({
-            if let function = $0 as? () -> Void {
-                function()
-            } else if let function = $0 as? (Self) -> Void {
-                function(sender as! Self)
-            }
-        })
-    }
-    
-    public func addTarget1(for controlEvents: UIControlEvents, action: @escaping (Self)->Void ) {
-        if controlEvents.contains(.touchDown) {
-            self.addTarget(self, action: #selector(touchDown(sender:)), for: .touchDown)
-            addAction(event: .touchDown, action: action)
-        }
-    }
-}
+extension TargetActionable {
 
-extension UIControl: TargetActionable {
-    
-    public var actionRegistry: [UInt:[Any]]  {
-        
-        set {
-            setAssociatedValue(object: self, associatedValue: newValue)
-        }
-        
-        get {
-            return getAssociatedValue(object: self, initialValue: [:])
-        }
-    }
-    
-    
-
-    public func addAction(event: UIControlEvents, action: Any) {
+    mutating func addAction(event: UIControlEvents, action: Any) {
         if var actions = self.actionRegistry[event.rawValue] {
             actions.append(action)
             self.actionRegistry[event.rawValue] = actions
@@ -57,85 +36,94 @@ extension UIControl: TargetActionable {
         }
     }
 
-    private func removeAction(event: UIControlEvents) {
+    mutating func removeAction(event: UIControlEvents) {
         self.actionRegistry[event.rawValue] = []
     }
+}
 
-    //MARK: - API
-    public func addTarget(for controlEvents: UIControlEvents, action: @escaping (UIControl)->Void ) {
+extension TargetActionable where Self: UIControl {
+
+    mutating func addTarget(for controlEvents: UIControlEvents, action: Any ) {
+        let targetAction = TargetAction(sender: self, action: action) { target in
+            if let function = target.action as? ()->Void {
+                function()
+            } else if let function = target.action as? (Self)->Void {
+                function(target.sender as! Self)
+            }
+        }
         if controlEvents.contains(.touchDown) {
             self.addTarget(self, action: #selector(touchDown(sender:)), for: .touchDown)
-            addAction(event: .touchDown, action: action)
+            addAction(event: .touchDown, action: targetAction)
         }
         if controlEvents.contains(.touchDownRepeat) {
             self.addTarget(self, action: #selector(touchDownRepeat(sender:)), for: .touchDownRepeat)
-            addAction(event: .touchDownRepeat, action: action)
+            addAction(event: .touchDownRepeat, action: targetAction)
         }
         if controlEvents.contains(.touchDragInside) {
             self.addTarget(self, action: #selector(touchDragInside(sender:)), for: .touchDragInside)
-            addAction(event: .touchDragInside, action: action)
+            addAction(event: .touchDragInside, action: targetAction)
         }
         if controlEvents.contains(.touchDragOutside) {
             self.addTarget(self, action: #selector(touchDragOutside(sender:)), for: .touchDragOutside)
-            addAction(event: .touchDragOutside, action: action)
+            addAction(event: .touchDragOutside, action: targetAction)
         }
         if controlEvents.contains(.touchDragEnter) {
             self.addTarget(self, action: #selector(touchDragEnter(sender:)), for: .touchDragEnter)
-            addAction(event: .touchDragEnter, action: action)
+            addAction(event: .touchDragEnter, action: targetAction)
         }
         if controlEvents.contains(.touchDragExit) {
             self.addTarget(self, action: #selector(touchDragExit(sender:)), for: .touchDragExit)
-            addAction(event: .touchDragExit, action: action)
+            addAction(event: .touchDragExit, action: targetAction)
         }
         if controlEvents.contains(.touchUpInside) {
             self.addTarget(self, action: #selector(touchUpInside(sender:)), for: .touchUpInside)
-            addAction(event: .touchUpInside, action: action)
+            addAction(event: .touchUpInside, action: targetAction)
         }
         if controlEvents.contains(.touchUpOutside) {
             self.addTarget(self, action: #selector(touchUpOutside(sender:)), for: .touchUpOutside)
-            addAction(event: .touchUpOutside, action: action)
+            addAction(event: .touchUpOutside, action: targetAction)
         }
         if controlEvents.contains(.touchCancel) {
             self.addTarget(self, action: #selector(touchCancel(sender:)), for: .touchCancel)
-            addAction(event: .touchCancel, action: action)
+            addAction(event: .touchCancel, action: targetAction)
         }
         if controlEvents.contains(.valueChanged) {
             self.addTarget(self, action: #selector(valueChanged(sender:)), for: .valueChanged)
-            addAction(event: .valueChanged, action: action)
+            addAction(event: .valueChanged, action: targetAction)
         }
         if #available(iOS 9.0, *) {
             if controlEvents.contains(.primaryActionTriggered) {
                 self.addTarget(self, action: #selector(primaryActionTriggered(sender:)), for: .primaryActionTriggered)
-                addAction(event: .primaryActionTriggered, action: action)
+                addAction(event: .primaryActionTriggered, action: targetAction)
             }
         }
         if controlEvents.contains(.editingDidBegin) {
             self.addTarget(self, action: #selector(editingDidBegin(sender:)), for: .editingDidBegin)
-            addAction(event: .editingDidBegin, action: action)
+            addAction(event: .editingDidBegin, action: targetAction)
         }
         if controlEvents.contains(.editingChanged) {
             self.addTarget(self, action: #selector(editingChanged(sender:)), for: .editingChanged)
-            addAction(event: .editingChanged, action: action)
+            addAction(event: .editingChanged, action: targetAction)
         }
         if controlEvents.contains(.editingDidEnd) {
             self.addTarget(self, action: #selector(editingDidEnd(sender:)), for: .editingDidEnd)
-            addAction(event: .editingDidEnd, action: action)
+            addAction(event: .editingDidEnd, action: targetAction)
         }
         if controlEvents.contains(.editingDidEndOnExit) {
             self.addTarget(self, action: #selector(editingDidEndOnExit(sender:)), for: .editingDidEndOnExit)
-            addAction(event: .editingDidEndOnExit, action: action)
+            addAction(event: .editingDidEndOnExit, action: targetAction)
         }
         if controlEvents.contains(.allTouchEvents) {
             self.addTarget(self, action: #selector(allTouchEvents(sender:)), for: .allTouchEvents)
-            addAction(event: .allTouchEvents, action: action)
+            addAction(event: .allTouchEvents, action: targetAction)
         }
         if controlEvents.contains(.allEditingEvents) {
             self.addTarget(self, action: #selector(allEditingEvents(sender:)), for: .allEditingEvents)
-            addAction(event: .allEditingEvents, action: action)
+            addAction(event: .allEditingEvents, action: targetAction)
         }
     }
 
-    func removeTarget(for controlEvents: UIControlEvents) {
+    mutating func removeTarget(for controlEvents: UIControlEvents) {
         if controlEvents.contains(.touchDown) {
             self.removeTarget(self, action: #selector(touchDown(sender:)), for: .touchDown)
             removeAction(event: .touchDown)
@@ -206,6 +194,26 @@ extension UIControl: TargetActionable {
             self.removeTarget(self, action: #selector(allEditingEvents(sender:)), for: .allEditingEvents)
             removeAction(event: .allEditingEvents)
         }
+    }
+}
+
+extension UIControl: TargetActionable {
+
+     var actionRegistry: [UInt:[Any]]  {
+        set {
+            setAssociatedValue(object: self, associatedValue: newValue)
+        }
+        get {
+            return getAssociatedValue(object: self, initialValue: [:])
+        }
+    }
+
+    func triggerAction(forObject sender: UIControl, event: UIControlEvents) {
+        sender.actionRegistry[event.rawValue]?.forEach({
+            if let function = $0 as? TargetAction {
+                function.invoke(function)
+            }
+        })
     }
 
     //MARK: - UIControlEvents
