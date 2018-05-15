@@ -25,6 +25,7 @@
 		AB30992420A27C3E00FF7569 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB30992020A27C3E00FF7569 /* UIViewExtensions.swift */; };
 		AB30992620A27C6A00FF7569 /* TargetAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB30992520A27C6A00FF7569 /* TargetAction.swift */; };
 		AB3BBFD3206CD341007A5EDD /* DSFoundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3BBFD2206CD341007A5EDD /* DSFoundation.swift */; };
+		AB9404F120AADDE500463EA9 /* ToastCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9404F020AADDE500463EA9 /* ToastCenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		AB30992820A27CF000FF7569 /* TargetAction.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = TargetAction.swift.gyb; sourceTree = "<group>"; };
 		AB3673B220A415180034ADCA /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		AB3BBFD2206CD341007A5EDD /* DSFoundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSFoundation.swift; sourceTree = "<group>"; };
+		AB9404F020AADDE500463EA9 /* ToastCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastCenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 		AB20CE7C2068D06B0038F90D /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				AB9404EF20AADDCC00463EA9 /* Toast */,
 				AB30991C20A27C3E00FF7569 /* Extensions */,
 			);
 			path = UIKit;
@@ -177,6 +180,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		AB9404EF20AADDCC00463EA9 /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				AB9404F020AADDE500463EA9 /* ToastCenter.swift */,
+			);
+			path = Toast;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -216,7 +227,7 @@
 		AB20CE632068D0190038F90D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = DiorStone;
 				TargetAttributes = {
 					AB20CE6B2068D0190038F90D = {
@@ -265,7 +276,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "curl -O https://raw.githubusercontent.com/apple/swift/master/utils/gyb\ncurl -O https://raw.githubusercontent.com/apple/swift/master/utils/gyb.py\nchmod +x gyb\n./gyb --line-directive '' -o ${SRCROOT}/Sources/UIKit/Extensions/TargetAction.swift ${SRCROOT}/Sources/UIKit/Extensions/TargetAction.swift.gyb";
+			shellScript = "#curl -O https://raw.githubusercontent.com/apple/swift/master/utils/gyb\n#curl -O https://raw.githubusercontent.com/apple/swift/master/utils/gyb.py\n#chmod +x gyb\n#./gyb --line-directive '' -o ${SRCROOT}/Sources/UIKit/Extensions/TargetAction.swift ${SRCROOT}/Sources/UIKit/Extensions/TargetAction.swift.gyb";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -284,6 +295,7 @@
 				AB30992320A27C3E00FF7569 /* UIViewControllerExtensions.swift in Sources */,
 				AB20CE9B2068D06B0038F90D /* Logger.swift in Sources */,
 				AB20CE932068D06B0038F90D /* Formatter.swift in Sources */,
+				AB9404F120AADDE500463EA9 /* ToastCenter.swift in Sources */,
 				AB30992420A27C3E00FF7569 /* UIViewExtensions.swift in Sources */,
 				AB20CE972068D06B0038F90D /* Target.swift in Sources */,
 				AB3BBFD3206CD341007A5EDD /* DSFoundation.swift in Sources */,
@@ -311,6 +323,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -318,6 +331,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -371,6 +385,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -378,6 +393,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
