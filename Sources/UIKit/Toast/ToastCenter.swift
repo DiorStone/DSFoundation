@@ -218,7 +218,7 @@ public class Toast  {
             self.isExecuting = true
             self.view.setNeedsLayout()
             self.view.alpha = 0
-            Window.default.addSubview(self.view)
+            Window.default.rootViewController?.view.addSubview(self.view)
             UIView.animate(
                 withDuration: 0.5,
                 delay: self.toast.delay,
@@ -288,20 +288,13 @@ public class Toast  {
 		
 		static let `default` = Window(frame: UIScreen.main.bounds)
 		
-		override var rootViewController: UIViewController? {
-			get {
-				guard let firstWindow = UIApplication.shared.delegate?.window else { return nil }
-				return firstWindow is Window ? nil : firstWindow?.rootViewController
-			}
-			set { /* Do nothing */ }
-		}
-        
         override init(frame: CGRect) {
             super.init(frame: frame)
             self.isUserInteractionEnabled = false
             self.windowLevel = CGFloat.greatestFiniteMagnitude
             self.backgroundColor = .clear
             self.isHidden = false
+			self.rootViewController = UIViewController()
             
             NotificationCenter.default.addObserver(self,
                                                    selector: #selector(statusBarOrientationDidChange),
@@ -314,35 +307,8 @@ public class Toast  {
         }
         
         @objc func statusBarOrientationDidChange() {
-            let orientation = UIApplication.shared.statusBarOrientation
-            let angle = self.angleForOrientation(orientation)
-            self.transform = CGAffineTransform(rotationAngle: CGFloat(angle))
-            if let window = UIApplication.shared.windows.first {
-                if orientation.isPortrait {
-                    self.frame.size.width = window.bounds.width
-                    self.frame.size.height = window.bounds.height
-                } else {
-                    self.frame.size.width = window.bounds.height
-                    self.frame.size.height = window.bounds.width
-                }
-            }
-            self.frame.origin = .zero
-            
             DispatchQueue.main.async {
                 Manager.default.currentOperation?.view.setNeedsLayout()
-            }
-        }
-        
-        func angleForOrientation(_ orientation: UIInterfaceOrientation) -> Double {
-            switch orientation {
-            case .landscapeLeft:
-                return -.pi / 2
-            case .landscapeRight:
-                return .pi / 2
-            case .portraitUpsideDown:
-                return .pi
-            default:
-                return 0
             }
         }
     }
