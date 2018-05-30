@@ -16,7 +16,11 @@ extension NibLoadableView where Self: UIView {
     
     fileprivate static func loadNibViews(_ nibName: String, _ inBundle: Bundle) -> [UIView] {
         let nib = UINib(nibName: nibName, bundle: inBundle)
+        #if swift(>=4.1)
+        return nib.instantiate(withOwner: self, options: nil).compactMap({ $0 as? UIView })
+        #else
         return nib.instantiate(withOwner: self, options: nil).flatMap({ $0 as? UIView })
+        #endif
     }
     
     /// 从xib加载view
