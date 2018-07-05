@@ -1,5 +1,5 @@
 PODS:
-  - DSFoundation (0.1.0)
+  - DSFoundation (0.1.1)
 
 DEPENDENCIES:
   - DSFoundation (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  DSFoundation: 33af784a1a8ed8be289896d8e2aa910c6106b061
+  DSFoundation: 2829571bc9511bf03ae0767bf5199c77ca95ee76
 
 PODFILE CHECKSUM: 443a1f7cb73d1c480fbabdedcf44e116f56f616f
 

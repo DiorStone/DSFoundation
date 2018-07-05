@@ -9,11 +9,25 @@
 import UIKit
 import DSFoundation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, Pagingable {
 
+	//1.需要显示总共有几页 7/8 服务器会返回总条数
+	//2.服务器不返回,多一次请求
+	var currentPage: Int = 0
+	var pageSize: Int = 0
+	var hasNextPage: Bool = true
+	
+	var total: Int?
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//		currentPage = 1
+//		pageSize = 10
+//		hasNextPage = true
+		
+		//请求接口后
+		print("\(currentPage)/\(total!/pageSize)")
+		
         let textFiled = UITextField(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
         textFiled.placeholder = "12323"
         self.view.addSubview(textFiled)
