@@ -20,7 +20,7 @@ public class Application {
     ///1. 添加引导页等
     public static let isFirstStart: Bool = {
         let key = UserDefaultsKey.isFirstStart.rawValue + Application.version + Application.build
-        let value = !UserDefaults.standard.bool(forKey: UserDefaultsKey.isFirstStart.rawValue)
+        let value = !UserDefaults.standard.bool(forKey: key)
         if value {
             UserDefaults.standard.setValue(true, forKey: key)
             UserDefaults.standard.synchronize()
