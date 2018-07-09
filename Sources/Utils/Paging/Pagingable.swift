@@ -8,15 +8,16 @@ import Foundation
 
 public protocol Pagingable {
 	
+    /// 分页配置
     var paging: Paging { get }
 }
 
 
 extension Pagingable {
-    
+	
+	/// 分页配置
     public var paging: Paging {
-        
-        return Paging()
+		return getAssociatedValue(object: self, initialValue: Paging())
     }
 }
 
@@ -61,5 +62,6 @@ public class PagingConfig {
     /// 分页大小,默认为10.
     public var pageSize: Int = 10
     
+    /// 全局分页配置
     public static let `default`: PagingConfig = PagingConfig()
 }

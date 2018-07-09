@@ -14,29 +14,29 @@ import ObjectiveC.runtime
 
 //MARK: Associated-get
 
-func getAssociatedValue<T>(object: AnyObject, key: String = #function) -> T? {
+func getAssociatedValue<T>(object: Any, key: String = #function) -> T? {
     return (objc_getAssociatedObject(object, key.address) as? AssociatedValue)?.value as? T
 }
 
-func getAssociatedValue<T>(object: AnyObject, initialValue: @autoclosure () -> T, key: String = #function) -> T {
+func getAssociatedValue<T>(object: Any, initialValue: @autoclosure () -> T, key: String = #function) -> T {
     return getAssociatedValue(object: object, key: key) ?? setAndReturn(initialValue: initialValue(), key: key, object: object)
 }
 
-fileprivate func setAndReturn<T>(initialValue: T, key: String, object: AnyObject) -> T {
+fileprivate func setAndReturn<T>(initialValue: T, key: String, object: Any) -> T {
     setAssociatedValue(object: object, associatedValue: initialValue, key: key)
     return initialValue
 }
 
 //MARK: Associated-set
-func setAssociatedValue<T>(object: AnyObject, associatedValue: T?, key: String = #function) {
+func setAssociatedValue<T>(object: Any, associatedValue: T?, key: String = #function) {
     set(associatedValue: AssociatedValue(associatedValue), key: key, object: object)
 }
 
-func setAssociatedValue<T : AnyObject>(object: AnyObject, associatedValue: T?, key: String = #function) {
+func setAssociatedValue<T : AnyObject>(object: Any, associatedValue: T?, key: String = #function) {
     set(associatedValue: AssociatedValue(weak: associatedValue), key: key, object: object)
 }
 
-private func set(associatedValue: AssociatedValue, key: String, object: AnyObject) {
+private func set(associatedValue: AssociatedValue, key: String, object: Any) {
     objc_setAssociatedObject(object, key.address, associatedValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
 }
 

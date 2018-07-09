@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		76F2A27D21B0044AEB9AA58C /* Pods_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2B9205C941081779B8086AA /* Pods_DemoTests.framework */; };
+		AB03590420F3AA9700B48FB6 /* PagingTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB03590320F3AA9700B48FB6 /* PagingTestCase.swift */; };
 		AB20CEAC2068D2090038F90D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB20CEAB2068D2090038F90D /* AppDelegate.swift */; };
 		AB20CEAE2068D2090038F90D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB20CEAD2068D2090038F90D /* ViewController.swift */; };
 		AB20CEB12068D2090038F90D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB20CEAF2068D2090038F90D /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 		78D56A845BE479CCD110D156 /* Pods-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Demo/Pods-Demo.release.xcconfig"; sourceTree = "<group>"; };
 		972B2EF89B8BDDB5CC1F0577 /* Pods_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2B9205C941081779B8086AA /* Pods_DemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB03590320F3AA9700B48FB6 /* PagingTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingTestCase.swift; sourceTree = "<group>"; };
 		AB20CEA82068D2090038F90D /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB20CEAB2068D2090038F90D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB20CEAD2068D2090038F90D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				AB20CECF2068D65D0038F90D /* UIViewExtensionTestCase.swift */,
 				AB20CED52068DDC10038F90D /* LoggerTestCase.swift */,
 				AB20CED92068FAF00038F90D /* UIDeviceExtensionTestCase.swift */,
+				AB03590320F3AA9700B48FB6 /* PagingTestCase.swift */,
 				AB20CEC72068D30E0038F90D /* Info.plist */,
 			);
 			path = DemoTests;
@@ -368,6 +371,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB20CECE2068D3380038F90D /* ApplicationTestCase.swift in Sources */,
+				AB03590420F3AA9700B48FB6 /* PagingTestCase.swift in Sources */,
 				AB20CEC62068D30E0038F90D /* DemoTests.swift in Sources */,
 				AB20CEDA2068FAF00038F90D /* UIDeviceExtensionTestCase.swift in Sources */,
 				AB20CED02068D65D0038F90D /* UIViewExtensionTestCase.swift in Sources */,
@@ -556,7 +560,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5837BF2FB1899F60A9B654AE /* Pods-DemoTests.debug.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = DemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -572,7 +575,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BB4C38B61D9DEE77B0ED5143 /* Pods-DemoTests.release.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = DemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

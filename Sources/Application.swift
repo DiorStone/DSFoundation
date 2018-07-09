@@ -11,22 +11,17 @@ import UIKit
 ///[参考链接](https://github.com/FabrizioBrancati/BFKit-Swift/blob/2.4.1/Sources/BFKit/Linux/BFKit/BFApp.swift)
 public class Application {
 
-    /// App是否第一次启动(调用后变true)
+    /// App是否第一次启动(调用后变false)
     ///## 返回值:
     ///- **true**: 第一次
     ///- **false**: 不是
     ///
     ///## 使用场景:
     ///1. 添加引导页等
-    public static let isFirstStart: Bool = {
-        let key = UserDefaultsKey.isFirstStart.rawValue + Application.version + Application.build
-        let value = !UserDefaults.standard.bool(forKey: key)
-        if value {
-            UserDefaults.standard.setValue(true, forKey: key)
-            UserDefaults.standard.synchronize()
-        }
-        return value
-    }()
+    public static let isFirstStart: Bool = isFirstValue(
+		UserDefaultsKey.isFirstStart.rawValue
+			+ Application.version
+			+ Application.build)
     
     /// App是否DEBUG model(通过#if DEBUG判断)
     ///## 返回值:
@@ -43,6 +38,22 @@ public class Application {
         #endif
         return value
     }()
+	
+	/// App某个行为是否第一次(调用后变false)
+	///## 返回值:
+	///- **true**: 第一次
+	///- **false**: 不是
+	///
+	/// - Parameter key: key
+	/// - Returns: value
+	public static func isFirstValue(_ key: String) -> Bool {
+		let value = !UserDefaults.standard.bool(forKey: key)
+		if value {
+			UserDefaults.standard.setValue(true, forKey: key)
+			UserDefaults.standard.synchronize()
+		}
+		return value
+	}
 }
 
 // MARK: - Bundle infos
