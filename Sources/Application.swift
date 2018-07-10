@@ -11,17 +11,16 @@ import UIKit
 ///[参考链接](https://github.com/FabrizioBrancati/BFKit-Swift/blob/2.4.1/Sources/BFKit/Linux/BFKit/BFApp.swift)
 public class Application {
 
-    /// App是否第一次启动(调用后变false)
+    /// App是否第一次启动(App重启后变false)
     ///## 返回值:
     ///- **true**: 第一次
     ///- **false**: 不是
     ///
     ///## 使用场景:
     ///1. 添加引导页等
-    public static let isFirstStart: Bool = isFirstValue(
-		UserDefaultsKey.isFirstStart.rawValue
-			+ Application.version
-			+ Application.build)
+    public static let isFirstStart: Bool = {
+        return isFirstValue(UserDefaultsKey.isFirstStart.rawValue + Application.version + Application.build)
+    }()
     
     /// App是否DEBUG model(通过#if DEBUG判断)
     ///## 返回值:

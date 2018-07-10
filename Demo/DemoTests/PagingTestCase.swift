@@ -10,7 +10,7 @@ import DSFoundation
 
 class PagingTestCase: XCTestCase, Pagingable {
 	
-	var customPage: Paging = Paging()
+    lazy var customPage: Paging = Paging()
 	
     override func setUp() {
         super.setUp()
