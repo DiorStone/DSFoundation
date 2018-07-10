@@ -81,9 +81,7 @@ If you prefer not to use any of the aforementioned dependency managers, you can 
   $ git submodule add https://github.com/DiorStone/DSFoundation.git
   ```
 
-## 更新说明
-* 0.1.0
-  - 初始化版本提交
+
 
 ## 推荐依赖库
 * [SwiftDate](https://github.com/malcommac/SwiftDate)常用日期处理
