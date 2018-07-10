@@ -24,7 +24,9 @@ class ApplicationTestCase: XCTestCase {
     func test() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-        assert(Application.isFirstStart)
+//        assert(Application.isFirstStart)
+//        assert(Application.isFirstValue("customKey"))
+//        assert(!Application.isFirstValue("customKey"))
         #if DEBUG
             assert(Application.isDebug == true)
         #endif
